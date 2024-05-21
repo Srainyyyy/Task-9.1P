@@ -32,7 +32,7 @@
             android:textSize="16sp" />
 
 
-    <Button
+    <android.widget.Button
         android:id="@+id/removebutton"
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -40,6 +40,6 @@
         android:layout_marginTop="360dp"
         android:hint="@string/remove">
 
-    </Button>
+    </android.widget.Button>
 
 </LinearLayout>

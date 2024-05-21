@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RemoveItemActivity extends AppCompatActivity {
 
     private TextView itemNameTextView;
+    private TextView itemDateTextView;
+    private TextView itemLocationView;
     private Button removeButton;
 
     @Override
@@ -20,6 +22,8 @@ public class RemoveItemActivity extends AppCompatActivity {
 
         // 初始化视图
         itemNameTextView = findViewById(R.id.itemNameText);
+        itemDateTextView = findViewById(R.id.timeDateText);
+        itemLocationView = findViewById(R.id.locationText);
         removeButton = findViewById(R.id.removebutton);
 
         // 获取传递的物品ID
@@ -31,6 +35,8 @@ public class RemoveItemActivity extends AppCompatActivity {
 
         // 显示物品名称
         itemNameTextView.setText(item.getItemName());
+        itemDateTextView.setText(item.getDate());
+        itemLocationView.setText(item.getLocation());
 
         // 设置按钮点击事件监听器
         removeButton.setOnClickListener(new View.OnClickListener() {

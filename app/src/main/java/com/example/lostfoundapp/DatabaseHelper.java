@@ -13,7 +13,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // 数据库名称和版本
     private static final String DATABASE_NAME = "LostAndFoundDB";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
+
 
     // 表名和列名
     private static final String TABLE_ITEMS = "items";
@@ -22,6 +23,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_DESCRIPTION = "description";
     private static final String COLUMN_DATE = "date";
     private static final String COLUMN_LOCATION = "location";
+    private static final String COLUMN_LATITUDE = "latitude";
+    private static final String COLUMN_LONGITUDE = "longitude";
 
     // 创建表的 SQL 语句
     private static final String CREATE_TABLE_ITEMS = "CREATE TABLE " + TABLE_ITEMS + "(" +
@@ -29,7 +32,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             COLUMN_ITEM_NAME + " TEXT," +
             COLUMN_DESCRIPTION + " TEXT," +
             COLUMN_DATE + " TEXT," +
-            COLUMN_LOCATION + " TEXT" +
+            COLUMN_LOCATION + " TEXT," +
+            COLUMN_LATITUDE + " REAL," +  // 添加经度列
+            COLUMN_LONGITUDE + " REAL" +   // 添加纬度列
             ")";
 
     public DatabaseHelper(Context context) {
@@ -50,19 +55,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // 插入一条数据
-    public long insertItem(String itemName, String description, String date, String location) {
+    public long insertItem(String itemName, String description, String date, String location, double latitude, double longitude) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ITEM_NAME, itemName);
         values.put(COLUMN_DESCRIPTION, description);
         values.put(COLUMN_DATE, date);
         values.put(COLUMN_LOCATION, location);
+        values.put(COLUMN_LATITUDE, latitude);
+        values.put(COLUMN_LONGITUDE, longitude);
         long id = db.insert(TABLE_ITEMS, null, values);
         db.close();
         return id;
     }
 
-    // 获取单个数据项
     // 获取单个数据项
     public Item getItem(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -77,6 +83,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int descIndex = cursor.getColumnIndex(COLUMN_DESCRIPTION);
             int dateIndex = cursor.getColumnIndex(COLUMN_DATE);
             int locIndex = cursor.getColumnIndex(COLUMN_LOCATION);
+            int latIndex = cursor.getColumnIndex(COLUMN_LATITUDE);
+            int lngIndex = cursor.getColumnIndex(COLUMN_LONGITUDE);
 
             if (idIndex != -1) {
                 item.setId(cursor.getInt(idIndex));
@@ -93,12 +101,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (locIndex != -1) {
                 item.setLocation(cursor.getString(locIndex));
             }
+            if (latIndex != -1) {
+                item.setLatitude(cursor.getDouble(latIndex));
+            }
+            if (lngIndex != -1) {
+                item.setLongitude(cursor.getDouble(lngIndex));
+            }
             cursor.close();
         }
         db.close();
         return item;
     }
-
 
     // 查询所有数据
     public List<Item> getAllItems() {
@@ -116,6 +129,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int descIndex = cursor.getColumnIndex(COLUMN_DESCRIPTION);
                 int dateIndex = cursor.getColumnIndex(COLUMN_DATE);
                 int locIndex = cursor.getColumnIndex(COLUMN_LOCATION);
+                int latIndex = cursor.getColumnIndex(COLUMN_LATITUDE);
+                int lngIndex = cursor.getColumnIndex(COLUMN_LONGITUDE);
 
                 if (idIndex != -1) {
                     item.setId(cursor.getInt(idIndex));
@@ -131,6 +146,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 if (locIndex != -1) {
                     item.setLocation(cursor.getString(locIndex));
+                }
+                if (latIndex != -1) {
+                    item.setLatitude(cursor.getDouble(latIndex));
+                }
+                if (lngIndex != -1) {
+                    item.setLongitude(cursor.getDouble(lngIndex));
                 }
                 itemList.add(item);
             } while (cursor.moveToNext());

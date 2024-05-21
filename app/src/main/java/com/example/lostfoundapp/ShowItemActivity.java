@@ -51,4 +51,18 @@ public class ShowItemActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 更新适配器数据
+        adapter.clear();
+        itemList.clear();
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        itemList = databaseHelper.getAllItems();
+        for (Item item : itemList) {
+            adapter.add(item.getItemName());
+        }
+        adapter.notifyDataSetChanged();
+    }
 }

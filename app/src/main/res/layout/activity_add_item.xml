@@ -118,12 +118,20 @@
         android:background="@drawable/edit_text_border"
         android:inputType="text" />
 
-    <Button
+    <android.widget.Button
+        android:id="@+id/getLocationButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="GET CURRENT LOCATION" />
+
+    <android.widget.Button
         android:id="@+id/saveButton"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:text="SAVE" />
 
 </LinearLayout>

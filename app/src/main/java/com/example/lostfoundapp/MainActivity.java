@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private Button createButton, showButton;
+    private Button showOnMapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         // 初始化按钮
         createButton = findViewById(R.id.createbutton);
         showButton = findViewById(R.id.showbutton);
+        showOnMapButton = findViewById(R.id.showOnMapButton);
 
         // 设置按钮点击事件监听器
         createButton.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 当点击展示按钮时，启动 ShowItemActivity
                 Intent intent = new Intent(MainActivity.this, ShowItemActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 显示在地图上按钮点击事件
+        showOnMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 点击按钮后启动 MapActivity
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
                 startActivity(intent);
             }
         });

@@ -7,29 +7,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/createbutton"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="248dp"
-        android:textColor="@color/white"
-        android:hint="@string/create"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="150dp"
+        android:text="@string/create"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    </Button>
+    </android.widget.Button>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/showbutton"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="348dp"
-        android:textColor="@color/white"
-        android:hint="@string/show"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="300dp"
+        android:text="@string/show"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    </Button>
+    </android.widget.Button>
+
+    <android.widget.Button
+        android:id="@+id/showOnMapButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="450dp"
+        android:text="@string/map"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </android.widget.Button>
 
 
 

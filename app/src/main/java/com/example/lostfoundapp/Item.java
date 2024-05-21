@@ -2,17 +2,19 @@ package com.example.lostfoundapp;
 
 public class Item {
 
-    private int id;
-    private String itemName;
-    private String description;
-    private String date;
-    private String location;
+    private int id; // 物品ID
+    private String itemName; // 物品名称
+    private String description; // 物品描述
+    private String date; // 日期
+    private String location; // 位置描述（如地址）
+    private double latitude; // 纬度
+    private double longitude; // 经度
 
-    // 构造函数
+    // 默认构造函数
     public Item() {
     }
 
-    // 构造函数
+    // 含参数的构造函数（不含经纬度）
     public Item(String itemName, String description, String date, String location) {
         this.itemName = itemName;
         this.description = description;
@@ -20,12 +22,22 @@ public class Item {
         this.location = location;
     }
 
-    // 获取id
+    // 含参数的构造函数（含经纬度）
+    public Item(String itemName, String description, String date, String location, double latitude, double longitude) {
+        this.itemName = itemName;
+        this.description = description;
+        this.date = date;
+        this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    // 获取物品ID
     public int getId() {
         return id;
     }
 
-    // 设置id
+    // 设置物品ID
     public void setId(int id) {
         this.id = id;
     }
@@ -60,13 +72,33 @@ public class Item {
         this.date = date;
     }
 
-    // 获取位置
+    // 获取位置描述
     public String getLocation() {
         return location;
     }
 
-    // 设置位置
+    // 设置位置描述
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    // 获取纬度
+    public double getLatitude() {
+        return latitude;
+    }
+
+    // 设置纬度
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    // 获取经度
+    public double getLongitude() {
+        return longitude;
+    }
+
+    // 设置经度
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

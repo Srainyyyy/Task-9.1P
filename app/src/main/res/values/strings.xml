@@ -3,4 +3,6 @@
     <string name="create">CREATE A NEW ADVERT</string>
     <string name="show">SHOW ALL LOST &amp; FOUND ITEMS</string>
     <string name="remove">REMOVE</string>
+    <string name="map">SHOW ON MAP</string>
+    <string name="google_maps_key"> AIzaSyD7YpUhNdIY5Lbd8qxtT1q7bvO3XPeyl4U</string>
 </resources>
